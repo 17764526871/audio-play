@@ -2,7 +2,7 @@
   "name": "audio-player-electron",
   "version": "1.0.0",
   "description": "一个基于Electron和Vue的本地音频播放器",
-  "main": "electron/main.js",audio-play
+  "main": "electron/main.js",
   "homepage": "./",
   "scripts": {
     "dev": "vite",
@@ -40,10 +40,18 @@
     "win": {
       "target": [
         {
-          "target": "dir",
+          "target": "portable",
           "arch": ["x64"]
         }
-      ]
+      ],
+      "artifactName": "${productName}-${version}-portable.${ext}"
+    },
+    "portable": {
+      "requestExecutionLevel": "user"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     },
     "mac": {
       "target": "dmg"

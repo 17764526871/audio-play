@@ -73,7 +73,7 @@
 </template>
 
 <script>
-const { ipcRenderer } = require('electron')
+// 使用通过 preload 脚本暴露的安全 API
 
 export default {
   name: 'AudioPlayer',
@@ -99,7 +99,7 @@ export default {
     // 选择文件
     async selectFile() {
       try {
-        const selectedPath = await ipcRenderer.invoke('select-audio-file')
+        const selectedPath = await window.electronAPI.selectAudioFile()
         if (selectedPath) {
           this.filePath = selectedPath
           this.errorMessage = ''
@@ -118,14 +118,14 @@ export default {
 
       try {
         // 验证文件路径
-        const isValid = await ipcRenderer.invoke('validate-file-path', this.filePath)
+        const isValid = await window.electronAPI.validateFilePath(this.filePath)
         if (!isValid) {
           this.errorMessage = '文件不存在或格式不支持'
           return
         }
 
         // 通过主进程读取音频文件
-        const audioData = await ipcRenderer.invoke('load-audio-file', this.filePath)
+        const audioData = await window.electronAPI.loadAudioFile(this.filePath)
         
         // 创建Blob URL
         const binaryString = atob(audioData.data)

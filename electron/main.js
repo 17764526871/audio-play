@@ -11,12 +11,12 @@ function createWindow() {
     minWidth: 600,
     minHeight: 400,
     webPreferences: {
-      // 允许在渲染进程中使用 Node.js API
-      nodeIntegration: true,
-      // 关闭上下文隔离，允许渲染进程直接访问主进程的 API
-      contextIsolation: false,
-      // 启用 remote 模块，允许渲染进程访问主进程的模块
-      enableRemoteModule: true
+      // 启用上下文隔离以提高安全性
+      contextIsolation: true,
+      // 禁用 node integration 以提高安全性
+      nodeIntegration: false,
+      // 启用预加载脚本
+      preload: path.join(__dirname, 'preload.js')
     },
     // 设置窗口标题栏样式为默认样式
     titleBarStyle: 'default',

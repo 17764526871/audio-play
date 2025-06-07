@@ -94,4 +94,87 @@ audio-player-electron/
 - 文件选择和路径验证
 - 进度条拖动控制
 - 现代化UI设计
-- 跨平台支持 
+- 跨平台支持
+
+## 项目状态
+
+✅ **Git推送问题已解决** - 大文件问题已修复，node_modules已正确从版本控制中排除。
+
+## 技术栈
+
+- **前端框架**: Vue 3
+- **桌面框架**: Electron
+- **构建工具**: Vite
+- **语言**: TypeScript
+
+## 开发环境配置
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 开发模式
+
+```bash
+npm run dev
+```
+
+### 构建应用
+
+```bash
+npm run build
+```
+
+### 打包为桌面应用
+
+```bash
+npm run dist
+```
+
+## 项目结构
+
+```
+audio-play/
+├── src/                # 源代码目录
+├── electron/           # Electron主进程代码
+├── dist/              # 构建输出目录
+├── package.json       # 项目配置文件
+├── vite.config.js     # Vite配置文件
+└── .gitignore         # Git忽略规则
+```
+
+## Git相关说明
+
+### 已解决的问题
+
+1. **大文件推送失败**: 通过git filter-branch清理了包含大文件的历史记录
+2. **node_modules被误提交**: 已从版本控制中移除并添加到.gitignore
+3. **推送到GitHub受限**: 现在可以正常推送代码到远程仓库
+
+### 最佳实践
+
+- `node_modules` 目录已被正确忽略
+- 构建输出目录 `dist` 已被忽略
+- 环境变量文件和临时文件已被忽略
+- 编辑器配置文件已被忽略
+
+## 注意事项
+
+⚠️ **重要提醒**: 
+- 本项目已经过Git历史清理，如果你之前克隆过此仓库，建议重新克隆
+- 新的协作者只需要运行 `npm install` 即可安装依赖
+- 不要手动提交 `node_modules` 目录
+
+## 贡献指南
+
+1. Fork 此仓库
+2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add some amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 创建 Pull Request
+
+## 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。 
